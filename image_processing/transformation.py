@@ -1,5 +1,6 @@
 # transformations.py
 
+import cv2
 import numpy as np
 
 def rotate(image, angle, center=None):
