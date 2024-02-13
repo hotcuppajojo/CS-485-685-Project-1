@@ -1,0 +1,22 @@
+image_processing/ - This is the main package that contains all the modules related to image processing functionalities.
+loaders.py contains the load_img() function.
+displayers.py contains the display_img() function.
+filters.py contains generate_gaussian(), apply_filter(), and median_filtering() functions.
+histogram.py contains the hist_eq() function for histogram equalization.
+transformation.py contains the rotate() function for image rotation.
+edge_detection.py contains the edge_detection() function.
+
+tests/ - directory would contains all unit tests.
+test_loaders.py contains unit tests for loaders.py.
+test_displayers.py contains unit tests for displayers.py.
+test_filters.py contains unit tests for filters.py.
+test_histogram.py contains unit tests for histogram.py.
+test_transformation.py contains unit tests for transformation.py.
+test_edge_detection.py contains unit tests for edge_detection.py.
+
+utils/ - potential package for any utility functions that might be used across multiple modules.
+file_utils.py could have functions related to file handling.
+image_utils.py might include shared utility functions that are used by different image processing functions.
+README.txt - project description and any usage instructions.
+
+requirements.txt - A list of Python dependencies that are required to run the project.
