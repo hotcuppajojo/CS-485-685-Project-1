@@ -1,35 +1,21 @@
-import cv2
-import numpy as np
-import math
+# JoJo Petersky
+# CS 485/685 Spring '24 Project1
+# 2024/2/20
+# main.py
 
-def load_img(file_name):
-    # Load an image and convert it to grayscale
-    pass
+import unittest
+import coverage
 
-def display_img(image):
-    # Display an image
-    pass
+if __name__ == '__main__':
+    cov = coverage.Coverage()
+    cov.start()
 
-def generate_gaussian(sigma, filter_w, filter_h):
-    # Generate a Gaussian filter
-    pass
+    loader = unittest.TestLoader()
+    suite = loader.discover('tests')
 
-def apply_filter(image, filter, pad_pixels, pad_value):
-    # Apply a filter to an image
-    pass
+    runner = unittest.TextTestRunner(verbosity=2)
+    runner.run(suite)
 
-def median_filtering(image, filter_w, filter_h):
-    # Apply a median filter to an image
-    pass
-
-def hist_eq(image):
-    # Perform histogram equalization
-    pass
-
-def rotate(image, theta):
-    # Rotate an image
-    pass
-
-def edge_detection(image):
-    # Perform edge detection
-    pass
+    cov.stop()
+    cov.save()
+    cov.report(show_missing=True)
