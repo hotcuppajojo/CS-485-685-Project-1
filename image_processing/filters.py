@@ -13,30 +13,46 @@ def generate_gaussian(sigma, filter_w, filter_h):
     return h
 
 def apply_filter(image, filter, pad_pixels, pad_value):
-    # Default stride is 1
-    stride=1
+    stride = 1  # This is the stride of your convolution
+    filter_height, filter_width = filter.shape
+
+    # Calculate padding for height and width separately
+    pad_height = pad_pixels if isinstance(pad_pixels, int) else pad_pixels[0]
+    pad_width = pad_pixels if isinstance(pad_pixels, int) else pad_pixels[1]
 
     # Pad the image
-    padded_image = np.pad(image, pad_pixels, mode='constant', constant_values=pad_value)
+    padded_image = np.pad(image, ((pad_height, pad_height), (pad_width, pad_width)),
+                          mode='constant' if pad_value == 0 else 'edge',
+                          constant_values=pad_value)
 
     # Calculate the dimensions of the output image
-    output_height = ((image.shape[0] - filter.shape[0] + 2 * pad_pixels) // stride) + 1
-    output_width = ((image.shape[1] - filter.shape[1] + 2 * pad_pixels) // stride) + 1
+    output_height = ((image.shape[0] - filter_height + 2 * pad_height) // stride) + 1
+    output_width = ((image.shape[1] - filter_width + 2 * pad_width) // stride) + 1
     output = np.zeros((output_height, output_width))
 
     # Apply the filter
-    for i in range(0, image.shape[0] - filter.shape[0] + 1, stride):
-        for j in range(0, image.shape[1] - filter.shape[1] + 1, stride):
-            # Extract the window
-            window = padded_image[i:i+filter.shape[0], j:j+filter.shape[1]]
+    for i in range(0, output_height):
+        for j in range(0, output_width):
+            # Define the current region of interest
+            start_i = i * stride
+            start_j = j * stride
+            end_i = start_i + filter_height
+            end_j = start_j + filter_width
+            window = padded_image[start_i:end_i, start_j:end_j]
 
-            # Calculate the output value
+            # Calculate the convolution result (element-wise multiplication and sum)
             output_value = np.sum(window * filter)
 
-            # Store the output value
-            output[i // stride, j // stride] = output_value
+            # Store the result
+            output[i, j] = output_value
 
+    # Normalize the output to the range [0, 255]
+    output = ((output - np.min(output)) / (np.max(output) - np.min(output)) * 255)
+    output = np.clip(output, 0, 255).astype(np.uint8)
+
+    # Return the output
     return output
+
 
 def median_filtering(image, filter_w, filter_h):
     # Calculate the amount of padding needed

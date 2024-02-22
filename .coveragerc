@@ -1,8 +1,8 @@
 [run]
 source =
-    image_processing/
+    project1/image_processing/
 omit =
-    image_processing/__init__.py
+    project1/image_processing/__init__.py
 [report]
 show_missing = True
 exclude_lines =

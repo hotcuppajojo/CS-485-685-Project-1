@@ -1,8 +1,7 @@
-# __init.py__ for image_processing package
-
-from .displayers import display_img
-from .edge_detection import edge_detection
-from .filters import generate_gaussian, apply_filter, median_filtering
-from .histogram import hist_eq
+# image_processing/__init__.py
 from .loaders import load_img
+from .displayers import display_img
+from .filters import apply_filter, generate_gaussian, median_filtering
+from .histogram import hist_eq
 from .transformation import rotate
+from .edge_detection import edge_detection
