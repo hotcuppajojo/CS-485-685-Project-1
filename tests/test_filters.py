@@ -2,7 +2,7 @@
 
 import unittest
 import numpy as np
-from filters import apply_filter, generate_gaussian, median_filtering
+from image_processing import apply_filter, generate_gaussian, median_filtering
 
 class TestFilters(unittest.TestCase):
     def test_generate_gaussian(self):

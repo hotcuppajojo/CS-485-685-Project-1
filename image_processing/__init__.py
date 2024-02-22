@@ -5,4 +5,4 @@ from .edge_detection import edge_detection
 from .filters import generate_gaussian, apply_filter, median_filtering
 from .histogram import hist_eq
 from .loaders import load_img
-from .transformations import rotate
+from .transformation import rotate

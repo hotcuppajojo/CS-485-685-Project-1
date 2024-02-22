@@ -2,7 +2,7 @@
 
 import unittest
 import numpy as np
-from histogram import hist_eq
+from image_processing import hist_eq
 
 class TestHistogramEqualization(unittest.TestCase):
     def setUp(self):

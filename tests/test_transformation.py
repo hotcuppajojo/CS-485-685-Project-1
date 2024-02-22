@@ -2,7 +2,7 @@
 
 import unittest
 import numpy as np
-from transformations import rotate
+from image_processing import rotate
 
 class TestTransformations(unittest.TestCase):
     def setUp(self):

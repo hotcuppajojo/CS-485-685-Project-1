@@ -2,7 +2,7 @@
 
 import unittest
 import numpy as np
-from edge_detection import edge_detection
+from image_processing import edge_detection
 
 class TestEdgeDetection(unittest.TestCase):
     def setUp(self):
