@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./project1/tests/test_",
+        "./project1/image_processing",
+        "./project1/utils"
+    ]
+}

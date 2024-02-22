@@ -1,0 +1,17 @@
+[run]
+source =
+    project1/image_processing/
+omit =
+    project1/image_processing/__init__.py
+[report]
+show_missing = True
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self\.debug
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:
+    if self.debug is None
+    if typing.TYPE_CHECKING:
